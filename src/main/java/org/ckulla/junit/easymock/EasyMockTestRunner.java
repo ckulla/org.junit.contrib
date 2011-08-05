@@ -20,7 +20,6 @@ public class EasyMockTestRunner extends GuiceTestRunner {
 
 	@Override
 	protected Object createTest() throws Exception {
-		
 		Object o = super.createTest();
 		createMocks(o);
 		return o;

@@ -1,15 +1,9 @@
 package org.ckulla.junit.easymock;
 
-import static org.junit.Assert.*;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import com.google.inject.Inject;
-
-@RunWith(EasyMockTestRunner.class)
-public class EasyMockTestRunnerTest  {
+public class EasyMockTestRunnerTest extends EasyMockTest {
 
 	@Mock
 	ThisClassWillBeMocked mock;
