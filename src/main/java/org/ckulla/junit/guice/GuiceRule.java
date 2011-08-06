@@ -60,7 +60,7 @@ public class GuiceRule implements MethodRule {
 	}
 
 	private InjectWith getInjectWithAnnotation(Class<?> clazz) {
-		return findInherited(clazz, InjectWith.class);
+		return reflectionUtil.findInherited(clazz, InjectWith.class);
 	}
 
 	private Injector getInjectorFromWithModulesAnnotation(Class<?> clazz) {
@@ -78,7 +78,7 @@ public class GuiceRule implements MethodRule {
 	}
 
 	private WithModules getWithModulesAnnotation(Class<?> clazz) {
-		return findInherited(clazz, WithModules.class);
+		return reflectionUtil.findInherited(clazz, WithModules.class);
 	}
 
 	private Injector getInjectorFormInjectWithAnnotation(Class<?> clazz) {
@@ -95,23 +95,4 @@ public class GuiceRule implements MethodRule {
 		return Guice.createInjector (com.google.inject.util.Modules.EMPTY_MODULE);
 	}
 
-	public static <A extends Annotation> A findInherited(Class<?> clazz,
-			Class<A> annotationType) {
-		A annotation = clazz.getAnnotation(annotationType);
-		if (annotation != null) {
-			return annotation;
-		}
-		for (Class<?> ifc : clazz.getInterfaces()) {
-			annotation = findInherited(ifc, annotationType);
-			if (annotation != null) {
-				return annotation;
-			}
-		}
-		Class<?> superClass = clazz.getSuperclass();
-		if (superClass == null || superClass == Object.class) {
-			return null;
-		}
-		return findInherited(superClass, annotationType);
-	}
-	
 }
