@@ -28,6 +28,14 @@ public class GuiceRule implements MethodRule {
 		this.injector = Guice.createInjector (modules);
 	}
 
+	public Injector getInjector() {
+		return injector;
+	}
+
+	public <T> T getInstance(Class<T> clazz) {
+		return getInjector ().getInstance (clazz);
+	}
+
 	public Statement apply(final Statement base, FrameworkMethod method, final Object target) {
 		return new Statement () {
 
