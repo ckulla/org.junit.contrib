@@ -1,12 +1,12 @@
 package org.ckulla.junit.guice;
 
+import org.junit.Rule;
+
 import com.google.inject.Guice;
-import com.google.inject.Injector;
 
 public class InjectorTest extends BaseTest {
+
+	@Rule
+	public GuiceRule guiceRule = new GuiceRule (Guice.createInjector(new TestModule()));
 	
-	@UseInjector
-	public Injector getInjector () {
-		return Guice.createInjector(new TestModule());
-	}
 }

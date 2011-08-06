@@ -3,12 +3,14 @@ package org.ckulla.junit.easymock;
 import static org.junit.Assert.*;
 
 import org.easymock.EasyMock;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(EasyMockTestRunner.class)
-public class EasyMockTestRunnerTest {
+public class EasyMockRuleTest {
 	
+	@Rule
+	public EasyMockRule easyMockRule = new EasyMockRule ();
+
 	@Mock
 	ThisClassWillBeMocked mock;
 	

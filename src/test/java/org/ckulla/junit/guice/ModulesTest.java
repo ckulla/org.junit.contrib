@@ -1,13 +1,9 @@
 package org.ckulla.junit.guice;
 
-import java.util.List;
-
-import com.google.inject.Module;
+import org.junit.Rule;
 
 public class ModulesTest extends BaseTest {
-	
-	@Modules
-	public List<Module> modules () {
-		return Lists.newArrayList((Module) new TestModule());
-	}
+
+	@Rule
+	public GuiceRule guiceRule = new GuiceRule (new TestModule());
 }

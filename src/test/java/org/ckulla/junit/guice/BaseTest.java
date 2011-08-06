@@ -1,10 +1,12 @@
 package org.ckulla.junit.guice;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public abstract class BaseTest extends GuiceTest {
+public abstract class BaseTest {
 
 	@Inject
 	StringBuffer buffer;

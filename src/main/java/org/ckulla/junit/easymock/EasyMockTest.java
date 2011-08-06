@@ -1,8 +1,11 @@
 package org.ckulla.junit.easymock;
 
 import org.junit.Assert;
-import org.junit.runner.RunWith;
+import org.junit.Rule;
 
-@RunWith(EasyMockTestRunner.class)
 public abstract class EasyMockTest extends Assert {
+	
+	@Rule
+	public EasyMockRule easyMockRule = new EasyMockRule ();
+	
 }
