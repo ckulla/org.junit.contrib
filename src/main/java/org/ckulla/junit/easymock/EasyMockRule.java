@@ -1,6 +1,7 @@
 package org.ckulla.junit.easymock;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 import org.ckulla.junit.guice.Lists;
@@ -37,13 +38,16 @@ public class EasyMockRule implements MethodRule {
 	}
 	
 	private void createMocks(Object o) {
-		for (Field f : getMockFields(o.getClass())) {
+		for (Field field : getMockFields(o.getClass())) {
 			try {
-				Object mock = EasyMock.createMock(f.getType());
-				f.set(o, mock);
+				Object mock = EasyMock.createMock(field.getType());
+				field.setAccessible(true);
+				field.set(o, mock);
 			} catch (IllegalArgumentException e) {
 				throw new RuntimeException(e);
 			} catch (IllegalAccessException e) {
+				throw new RuntimeException(e);
+			} catch (SecurityException e) {
 				throw new RuntimeException(e);
 			}
 		}
@@ -51,6 +55,7 @@ public class EasyMockRule implements MethodRule {
 
 	private void verifyMocks(Object o) throws IllegalArgumentException, IllegalAccessException {
 		for (Field f : getMockFields(o.getClass())) {
+			f.setAccessible(true);
 			EasyMock.verify (f.get(o));
 		}
 	}			

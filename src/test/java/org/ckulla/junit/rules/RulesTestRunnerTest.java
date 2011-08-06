@@ -20,7 +20,7 @@ public class RulesTestRunnerTest {
 	StringBuffer buffer;
 	
 	@Mock
-	public ThisClassWillBeMocked mock;
+	ThisClassWillBeMocked mock;
 	
 	@Test
 	public void testInject () {
