@@ -8,25 +8,25 @@ import org.junit.runner.RunWith;
 
 @RunWith(EasyMockTestRunner.class)
 public class EasyMockTestRunnerTest {
-	
+
 	@Mock
 	ThisClassWillBeMocked mock;
-	
+
 	@Test
-	public void testCreateMocks () {
+	public void testCreateMocks() {
 		assertNotNull (mock);
 		EasyMock.replay (mock);
 	}
 
 	@Test
-	public void testCheckBehaviour () {
+	public void testCheckBehaviour() {
 		mock.foo ();
 		EasyMock.replay (mock);
 		mock.foo ();
 	}
 
-	@Test(expected=java.lang.AssertionError.class)
-	public void testCheckBehaviourFailing () {
+	@Test(expected = java.lang.AssertionError.class)
+	public void testCheckBehaviourFailing() {
 		EasyMock.replay (mock);
 		mock.foo ();
 	}

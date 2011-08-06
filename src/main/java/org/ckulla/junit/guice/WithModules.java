@@ -14,7 +14,7 @@ import com.google.inject.Module;
 @Inherited
 @Documented
 public @interface WithModules {
-        
-        Class<? extends Module>[] value();
-        
+
+	Class<? extends Module>[] value();
+
 }

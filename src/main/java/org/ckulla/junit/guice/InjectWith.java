@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Inherited
 @Documented
 public @interface InjectWith {
-        
-        Class<? extends InjectorProvider> value();
-        
+
+	Class<? extends InjectorProvider> value();
+
 }

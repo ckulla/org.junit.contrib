@@ -6,7 +6,7 @@ public class TestModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		bind (StringBuffer.class).toInstance(new StringBuffer("test"));
+		bind (StringBuffer.class).toInstance (new StringBuffer ("test"));
 	}
 
 }

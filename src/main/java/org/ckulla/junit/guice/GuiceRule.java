@@ -1,8 +1,5 @@
 package org.ckulla.junit.guice;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import org.ckulla.junit.easymock.ReflectionUtil;
@@ -17,18 +14,18 @@ import com.google.inject.Module;
 public class GuiceRule implements MethodRule {
 
 	ReflectionUtil reflectionUtil = new ReflectionUtil ();
-	
+
 	Injector injector;
 
-	public GuiceRule () {
+	public GuiceRule() {
 	}
 
-	public GuiceRule (Injector injector) {
+	public GuiceRule(Injector injector) {
 		this.injector = injector;
 	}
 
-	public GuiceRule (Module...modules) {
-		this.injector = Guice.createInjector(modules);		
+	public GuiceRule(Module... modules) {
+		this.injector = Guice.createInjector (modules);
 	}
 
 	public Statement apply(final Statement base, FrameworkMethod method, final Object target) {
@@ -39,51 +36,51 @@ public class GuiceRule implements MethodRule {
 				if (injector == null)
 					injector = createInjector (target);
 				if (injector != null) {
-					injector.injectMembers(target);
+					injector.injectMembers (target);
 				} else {
 					// FIXME: report error
 				}
-				base.evaluate();
+				base.evaluate ();
 			}
-			
+
 		};
 	}
 
 	protected Injector createInjector(Object o) {
-		if (getWithModulesAnnotation(o.getClass()) != null) {
-			return getInjectorFromWithModulesAnnotation(o.getClass());
+		if (getWithModulesAnnotation (o.getClass ()) != null) {
+			return getInjectorFromWithModulesAnnotation (o.getClass ());
 		}
-		if (getInjectWithAnnotation(o.getClass()) != null) {
-			return getInjectorFormInjectWithAnnotation(o.getClass());
+		if (getInjectWithAnnotation (o.getClass ()) != null) {
+			return getInjectorFormInjectWithAnnotation (o.getClass ());
 		}
-		return getDefaultInjector();
+		return getDefaultInjector ();
 	}
 
 	private InjectWith getInjectWithAnnotation(Class<?> clazz) {
-		return reflectionUtil.findInherited(clazz, InjectWith.class);
+		return reflectionUtil.findInherited (clazz, InjectWith.class);
 	}
 
 	private Injector getInjectorFromWithModulesAnnotation(Class<?> clazz) {
-		List<Module> modules = Lists.newArrayList();
-		for (Class<? extends Module> moduleClass : getWithModulesAnnotation(clazz).value()) {
+		List<Module> modules = Lists.newArrayList ();
+		for (Class<? extends Module> moduleClass : getWithModulesAnnotation (clazz).value ()) {
 			try {
-				modules.add (moduleClass.newInstance());
+				modules.add (moduleClass.newInstance ());
 			} catch (InstantiationException e) {
 				throw new RuntimeException (e);
 			} catch (IllegalAccessException e) {
 				throw new RuntimeException (e);
-			}				
+			}
 		}
-		return Guice.createInjector(modules);
+		return Guice.createInjector (modules);
 	}
 
 	private WithModules getWithModulesAnnotation(Class<?> clazz) {
-		return reflectionUtil.findInherited(clazz, WithModules.class);
+		return reflectionUtil.findInherited (clazz, WithModules.class);
 	}
 
 	private Injector getInjectorFormInjectWithAnnotation(Class<?> clazz) {
 		try {
-			return getInjectWithAnnotation(clazz).value().newInstance().get();
+			return getInjectWithAnnotation (clazz).value ().newInstance ().get ();
 		} catch (InstantiationException e) {
 			throw new RuntimeException (e);
 		} catch (IllegalAccessException e) {

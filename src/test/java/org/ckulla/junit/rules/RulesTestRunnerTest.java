@@ -12,26 +12,26 @@ import org.junit.runner.RunWith;
 
 import com.google.inject.Inject;
 
-@RunWith (RulesTestRunner.class)
-@Rules ({EasyMockRule.class, GuiceRule.class})
+@RunWith(RulesTestRunner.class)
+@Rules({ EasyMockRule.class, GuiceRule.class })
 public class RulesTestRunnerTest {
 
 	@Inject
 	StringBuffer buffer;
-	
+
 	@Mock
 	ThisClassWillBeMocked mock;
-	
+
 	@Test
-	public void testInject () {
+	public void testInject() {
 		assertNotNull (buffer);
-		EasyMock.replay(mock);
+		EasyMock.replay (mock);
 	}
 
 	@Test
-	public void testMock () {
+	public void testMock() {
 		assertNotNull (mock);
-		EasyMock.replay(mock);
+		EasyMock.replay (mock);
 	}
 
 }

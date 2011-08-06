@@ -8,9 +8,9 @@ public class GuiceTestRunnerTest extends GuiceTest {
 
 	@Inject
 	StringBuffer buffer;
-	
+
 	@Test
-	public void testInjection () {
+	public void testInjection() {
 		assertNotNull (buffer);
 	}
 

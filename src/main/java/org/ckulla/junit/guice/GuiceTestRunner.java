@@ -6,7 +6,7 @@ import org.junit.runners.model.InitializationError;
 public class GuiceTestRunner extends RulesTestRunner {
 
 	public GuiceTestRunner(Class<?> klass) throws InitializationError {
-		super(klass, new GuiceRule ());
+		super (klass, new GuiceRule ());
 	}
 
 }

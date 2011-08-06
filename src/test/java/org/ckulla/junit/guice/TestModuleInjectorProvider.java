@@ -6,7 +6,7 @@ import com.google.inject.Injector;
 public class TestModuleInjectorProvider implements InjectorProvider {
 
 	public Injector get() {
-		return Guice.createInjector(new TestModule());
+		return Guice.createInjector (new TestModule ());
 	}
 
 }

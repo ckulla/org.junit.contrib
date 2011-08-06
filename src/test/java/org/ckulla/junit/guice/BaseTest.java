@@ -10,10 +10,10 @@ public abstract class BaseTest {
 
 	@Inject
 	StringBuffer buffer;
-	
+
 	@Test
-	public void testInjection () {
-		assertEquals ("test", buffer.toString());
+	public void testInjection() {
+		assertEquals ("test", buffer.toString ());
 	}
 
 }

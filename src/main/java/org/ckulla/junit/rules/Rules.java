@@ -14,7 +14,7 @@ import org.junit.rules.MethodRule;
 @Inherited
 @Documented
 public @interface Rules {
-        
-        Class<? extends MethodRule>[] value();
-        
+
+	Class<? extends MethodRule>[] value();
+
 }

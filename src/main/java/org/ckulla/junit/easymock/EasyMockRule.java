@@ -13,51 +13,51 @@ import org.junit.runners.model.Statement;
 public class EasyMockRule implements MethodRule {
 
 	ReflectionUtil reflectionUtil = new ReflectionUtil ();
-	
+
 	public Statement apply(final Statement base, FrameworkMethod method, final Object target) {
 		return new Statement () {
 
 			@Override
 			public void evaluate() throws Throwable {
 				createMocks (target);
-				base.evaluate();
-				verifyMocks(target);
+				base.evaluate ();
+				verifyMocks (target);
 			}
-			
+
 		};
 	}
 
-	private List<Field> getMockFields (Class<?> clazz) {
-		List<Field> fields = Lists.newArrayList();
-		for (Field f : clazz.getDeclaredFields()) {
-			if (reflectionUtil.hasAnnotation(Mock.class, f.getAnnotations())) {
+	private List<Field> getMockFields(Class<?> clazz) {
+		List<Field> fields = Lists.newArrayList ();
+		for (Field f : clazz.getDeclaredFields ()) {
+			if (reflectionUtil.hasAnnotation (Mock.class, f.getAnnotations ())) {
 				fields.add (f);
 			}
 		}
 		return fields;
 	}
-	
+
 	private void createMocks(Object o) {
-		for (Field field : getMockFields(o.getClass())) {
+		for (Field field : getMockFields (o.getClass ())) {
 			try {
-				Object mock = EasyMock.createMock(field.getType());
-				field.setAccessible(true);
-				field.set(o, mock);
+				Object mock = EasyMock.createMock (field.getType ());
+				field.setAccessible (true);
+				field.set (o, mock);
 			} catch (IllegalArgumentException e) {
-				throw new RuntimeException(e);
+				throw new RuntimeException (e);
 			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
+				throw new RuntimeException (e);
 			} catch (SecurityException e) {
-				throw new RuntimeException(e);
+				throw new RuntimeException (e);
 			}
 		}
 	}
 
 	private void verifyMocks(Object o) throws IllegalArgumentException, IllegalAccessException {
-		for (Field f : getMockFields(o.getClass())) {
-			f.setAccessible(true);
-			EasyMock.verify (f.get(o));
+		for (Field f : getMockFields (o.getClass ())) {
+			f.setAccessible (true);
+			EasyMock.verify (f.get (o));
 		}
-	}			
+	}
 
 }
