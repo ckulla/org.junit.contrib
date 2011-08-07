@@ -1,4 +1,4 @@
-package org.junit.contrib.guice;
+package org.junit.contrib.rules;
 
 import java.util.ArrayList;
 import java.util.List;

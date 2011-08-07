@@ -2,7 +2,8 @@ package org.junit.contrib.guice;
 
 import java.util.List;
 
-import org.junit.contrib.easymock.ReflectionUtil;
+import org.junit.contrib.rules.Lists;
+import org.junit.contrib.rules.ReflectionUtil;
 import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;

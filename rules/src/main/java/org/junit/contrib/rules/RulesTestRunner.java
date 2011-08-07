@@ -3,7 +3,6 @@ package org.junit.contrib.rules;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.contrib.easymock.ReflectionUtil;
 import org.junit.internal.runners.statements.InvokeMethod;
 import org.junit.rules.MethodRule;
 import org.junit.runners.BlockJUnit4ClassRunner;

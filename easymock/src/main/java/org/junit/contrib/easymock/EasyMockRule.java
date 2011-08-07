@@ -1,11 +1,10 @@
 package org.junit.contrib.easymock;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.junit.contrib.guice.Lists;
+import org.junit.contrib.rules.Lists;
 import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
