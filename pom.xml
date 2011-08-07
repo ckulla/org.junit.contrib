@@ -10,6 +10,7 @@
     <module>easymock</module>
     <module>guice</module>
     <module>rules</module>
+    <module>emf</module>
   </modules>
 
   <dependencies>
