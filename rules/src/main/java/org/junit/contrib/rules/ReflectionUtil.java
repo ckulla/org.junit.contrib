@@ -1,6 +1,7 @@
 package org.junit.contrib.rules;
 
 import java.lang.annotation.Annotation;
+import java.util.List;
 
 public class ReflectionUtil {
 
@@ -28,6 +29,20 @@ public class ReflectionUtil {
 			return null;
 		}
 		return findInherited (superClass, annotationType);
+	}
+
+	public <A extends Annotation> List<A> findAllInherited(Class<?> clazz, Class<A> annotationType) {
+		List<A> rv = Lists.newArrayList ();
+		Class<?> superClass = clazz.getSuperclass ();
+		if (superClass != null && superClass != Object.class) {
+			rv.addAll (findAllInherited (superClass, annotationType));
+		}
+		for (Class<?> ifc : clazz.getInterfaces ()) {
+			rv.addAll (findAllInherited (ifc, annotationType));
+		}
+		if (clazz.getAnnotation (annotationType) != null)
+			rv.add (clazz.getAnnotation (annotationType));
+		return rv;
 	}
 
 }

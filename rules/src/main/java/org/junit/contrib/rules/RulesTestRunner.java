@@ -43,9 +43,9 @@ public class RulesTestRunner extends BlockJUnit4ClassRunner {
 	}
 
 	private List<MethodRule> getRulesAnnotation(Class<?> clazz) {
-		Rules annotation = reflectionUtil.findInherited (clazz, Rules.class);
+		List<Rules> annotations = reflectionUtil.findAllInherited (clazz, Rules.class);
 		List<MethodRule> rules = new ArrayList<MethodRule> ();
-		if (annotation != null) {
+		for (Rules annotation : annotations) {
 			for (Class<? extends MethodRule> c : annotation.value ()) {
 				try {
 					rules.add (c.newInstance ());
