@@ -15,18 +15,35 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
  * global registries from EMF.
  * 
  * @author Sven Efftinge - Initial contribution and API
+ * @author Christoph Kulla - Renamed into EmfRegistryUtils
  */
-public class GlobalRegistries {
+public class EmfRegistryUtils {
 
-	public static class GlobalStateMemento {
-		private HashMap<EPackage, Object> validatorReg;
-		private HashMap<String, Object> epackageReg;
-		private HashMap<String, Object> protocolToFactoryMap;
-		private HashMap<String, Object> extensionToFactoryMap;
-		private HashMap<String, Object> contentTypeIdentifierToFactoryMap;
+	public static class EmfRegistryState {
+		private final HashMap<EPackage, Object> validatorReg;
+		private final HashMap<String, Object> epackageReg;
+		private final HashMap<String, Object> protocolToFactoryMap;
+		private final HashMap<String, Object> extensionToFactoryMap;
+		private final HashMap<String, Object> contentTypeIdentifierToFactoryMap;
 
-		public void restoreGlobalState() {
-			clearGlobalRegistries ();
+		public EmfRegistryState() {
+			validatorReg = new HashMap<EPackage, Object> (EValidator.Registry.INSTANCE);
+			epackageReg = new HashMap<String, Object> (EPackage.Registry.INSTANCE);
+			protocolToFactoryMap = new HashMap<String, Object> (
+						Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap ());
+			extensionToFactoryMap = new HashMap<String, Object> (
+						Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap ());
+			contentTypeIdentifierToFactoryMap = new HashMap<String, Object> (
+						Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap ());
+		}
+
+		public void restore() {
+			EValidator.Registry.INSTANCE.clear ();
+			EPackage.Registry.INSTANCE.clear ();
+			Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap ().clear ();
+			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap ().clear ();
+			Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap ().clear ();
+
 			EValidator.Registry.INSTANCE.putAll (validatorReg);
 			EPackage.Registry.INSTANCE.putAll (epackageReg);
 
@@ -36,27 +53,8 @@ public class GlobalRegistries {
 		}
 	}
 
-	public static GlobalStateMemento makeCopyOfGlobalState() {
-		GlobalStateMemento memento = new GlobalStateMemento ();
-		memento.validatorReg = new HashMap<EPackage, Object> (EValidator.Registry.INSTANCE);
-		memento.epackageReg = new HashMap<String, Object> (EPackage.Registry.INSTANCE);
-		memento.protocolToFactoryMap = new HashMap<String, Object> (
-					Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap ());
-		memento.extensionToFactoryMap = new HashMap<String, Object> (
-					Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap ());
-		memento.contentTypeIdentifierToFactoryMap = new HashMap<String, Object> (
-					Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap ());
-		return memento;
-	}
-
-	public static void clearGlobalRegistries() {
-		EValidator.Registry.INSTANCE.clear ();
-		EPackage.Registry.INSTANCE.clear ();
-		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap ().clear ();
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap ().clear ();
-		Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap ().clear ();
-
-		initializeDefaults ();
+	public static EmfRegistryState copyRegistryState() {
+		return new EmfRegistryState ();
 	}
 
 	public static void initializeDefaults() {
