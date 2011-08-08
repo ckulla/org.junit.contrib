@@ -6,7 +6,7 @@
     <version>1.0</version>
   </parent>
   <groupId>org.junit.contrib</groupId>
-  <artifactId>guice</artifactId>
+  <artifactId>junit-contrib-guice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>JUnit Extensions for Google Guice</name>
   <dependencies>
@@ -18,7 +18,7 @@
     </dependency>
     <dependency>
       <groupId>org.junit.contrib</groupId>
-      <artifactId>rules</artifactId>
+      <artifactId>junit-contrib-rules</artifactId>
       <version>0.0.1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>

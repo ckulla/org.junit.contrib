@@ -7,18 +7,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.junit.contrib.eclipse</groupId>
-	<artifactId>ui.test</artifactId>
+	<artifactId>junit-contrib-eclipse-ui-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JUnit Extension for Eclipse User Interface Test</name>
 	<packaging>eclipse-test-plugin</packaging>
-
-	<!--repositories>
-		<repository>
-			<id>local-p2</id>
-			<layout>p2</layout>
-			<url>${local-p2-site}</url>
-		</repository>
-	</repositories-->
 
 	<build>
 		<plugins>
@@ -35,23 +27,6 @@
 					<argLine>${ui.test.vmargs}</argLine>
 					<application>org.eclipse.ui.ide.workbench</application>
 					<dependencies>
-					<!-- 
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.pde.feature.group</artifactId>
-							<version>${platform-version}</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.aniszczyk.minerva.feature.group</artifactId>
-							<version>1.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.cvs.feature.group</artifactId>
-							<version>[1.1.2,2.0.0)</version>
-						</dependency>
-						-->
 					</dependencies>
 				</configuration>
 			</plugin>

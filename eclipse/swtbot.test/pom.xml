@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.junit.contrib.eclipse</groupId>
-	<artifactId>swtbot.test</artifactId>
+	<artifactId>junit-contrib-eclipse-swtbot-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JUnit Extension for Eclipse SWT-Bot Test</name>
 	<packaging>eclipse-test-plugin</packaging>

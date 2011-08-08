@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.junit.contrib.eclipse</groupId>
-	<artifactId>swtbot</artifactId>
+	<artifactId>junit-contrib-eclipse-swtbot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JUnit Extension for Eclipse SWT-Bot</name>
 	<packaging>eclipse-plugin</packaging>

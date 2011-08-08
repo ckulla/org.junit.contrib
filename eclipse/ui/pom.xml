@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.junit.contrib.eclipse</groupId>
-	<artifactId>ui</artifactId>
+	<artifactId>junit-contrib-eclipse-ui</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JUnit Extension for Eclipse User Interface</name>
 	<packaging>eclipse-plugin</packaging>
