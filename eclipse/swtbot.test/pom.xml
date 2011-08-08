@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.junit.contrib.eclipse</groupId>
-	<artifactId>ui.test</artifactId>
+	<artifactId>swtbot.test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JUnit Extension for Eclipse User Interface Test</name>
+	<name>JUnit Extension for Eclipse SWT-Bot Test</name>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<!--repositories>
@@ -27,8 +27,8 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<testSuite>org.junit.contrib.eclipse.ui.test</testSuite>
-					<testClass>org.junit.contrib.eclipse.ui.AllPluginTests</testClass>
+					<testSuite>org.junit.contrib.eclipse.swtbot.test</testSuite>
+					<testClass>org.junit.contrib.eclipse.swtbot.AllPluginTests</testClass>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>
 					<product>org.eclipse.sdk.ide</product>
