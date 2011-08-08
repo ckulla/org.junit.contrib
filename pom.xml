@@ -11,6 +11,7 @@
     <module>guice</module>
     <module>rules</module>
     <module>emf</module>
+    <module>eclipse</module>
   </modules>
 
   <dependencies>
