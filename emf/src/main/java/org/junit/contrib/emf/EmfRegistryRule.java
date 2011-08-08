@@ -17,13 +17,13 @@ public class EmfRegistryRule implements MethodRule {
 
 			@Override
 			public void evaluate() throws Throwable {
-				EmfRegistryState stateMemento = EmfRegistryUtils.copyRegistryState ();
+				EmfRegistryState registryState = EmfRegistryUtils.copyRegistryState ();
 				if (initializeDefaults)
 					EmfRegistryUtils.initializeDefaults ();
 				try {
 					base.evaluate ();
 				} finally {
-					stateMemento.restore ();
+					registryState.restore ();
 				}
 			}
 
