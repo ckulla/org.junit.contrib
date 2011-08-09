@@ -6,12 +6,15 @@
   <version>1.0</version>
   <name>JUnit Extensions</name>
 
+ <properties>
+    <manifest-location>META-INF</manifest-location>
+  </properties>
+
   <modules>
     <module>easymock</module>
     <module>guice</module>
     <module>rules</module>
     <module>emf</module>
-    <module>eclipse</module>
   </modules>
 
   <dependencies>
