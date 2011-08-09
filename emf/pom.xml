@@ -3,7 +3,7 @@
   <parent>
     <artifactId>parent</artifactId>
     <groupId>org.junit.contrib</groupId>
-    <version>1.0</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
   <groupId>org.junit.contrib</groupId>
   <artifactId>junit-contrib-emf</artifactId>
