@@ -3,11 +3,9 @@
   <parent>
     <groupId>org.junit.contrib</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOTSHOT</version>
   </parent>
-  <groupId>org.junit.contrib</groupId>
   <artifactId>junit-contrib-guice</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>JUnit Extensions for Google Guice</name>
   <dependencies>
     <dependency>

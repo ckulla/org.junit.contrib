@@ -4,7 +4,7 @@
 	<groupId>org.junit.contrib</groupId>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOTSHOT</version>
 	<name>JUnit Extensions</name>
 
 	<properties>
